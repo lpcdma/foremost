@@ -14,6 +14,17 @@
 
 #include "main.h"
 
+#ifdef __ANDROID__
+  #define fopen64 fopen
+  #ifdef __USE_FILE_OFFSET64
+    #define ftello64 ftello
+    #define fseeko64 fseeko
+  #else
+    #define ftello64 ftell
+    #define fseeko64 fseek
+  #endif
+#endif
+
 int user_interrupt (f_state * s, f_info * i)
 	{
 	audit_msg(s, "Interrupt received at %s", current_time());

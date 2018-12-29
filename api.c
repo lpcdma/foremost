@@ -19,7 +19,9 @@ int				FATblk;
 int				currFATblk;
 int				highblk = 0;
 int				block_list[OUR_BLK_SIZE / sizeof(int)];
+#ifndef __ANDROID__
 extern int		errno;
+#endif
 
 /*Inititialize those globals used by extract_ole*/
 void init_ole()
